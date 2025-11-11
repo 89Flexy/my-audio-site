@@ -16,6 +16,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>89 Flexy Home</title>
+<link rel="icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" sizes="32x32" />
 <style>
   /* Preloader styles */
   #preloader {
@@ -86,7 +87,7 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Circle animation */
+  /* Gradient circle */
   .circle-out {
     position: fixed;
     left: 50%;
@@ -96,7 +97,7 @@
     border-radius: 50%;
     background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
     background-size: 200% 200%;
-    box-shadow: 0 0 100px rgba(255, 0, 128, 0.7), 0 0 150px rgba(30, 144, 255, 0.6);
+    box-shadow: 0 0 100px rgba(255,0,128,0.7), 0 0 150px rgba(30,144,255,0.6);
     transform: translate(-50%, -50%) scale(0);
     animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
     z-index: 9999;
@@ -113,7 +114,6 @@
     100% { background-position: 0% 50%; }
   }
 
-<style>
   /* Image fade/scale animation with 2s hold */
   .intro-image {
     position: fixed;
@@ -133,7 +133,6 @@
     77% { opacity: 1; transform: translate(-50%, -50%) scale(1); }  /* hold visible */
     100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); } /* fade out */
   }
-</style>
 
 </style>
 </head>
@@ -154,7 +153,12 @@
     Your browser does not support the audio element.
   </audio>
 </div>
+
 <script>
+  const startBtn = document.getElementById("startBtn");
+  const introAudio = document.getElementById("introAudio");
+  const preloader = document.getElementById("preloader");
+
   startBtn.addEventListener("click", () => {
     // Play audio
     introAudio.play().catch(err => console.log("Audio play blocked", err));
@@ -167,30 +171,18 @@
     // Hide preloader content
     preloader.style.display = "none";
 
-    // 🆕 Add fading image AFTER hiding preloader to ensure visibility
+    // Add fading image
     const img = document.createElement("img");
-    img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png"; // test URL
-    img.style.position = "fixed";
-    img.style.left = "50%";
-    img.style.top = "50%";
-    img.style.transform = "translate(-50%, -50%) scale(0.8)";
-    img.style.width = "180px";
-    img.style.borderRadius = "12px";
-    img.style.zIndex = "10000";
-    img.style.animation = "fadeHoldImage 3.5s ease-in-out forwards";
-    
+    img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png";
+    img.classList.add("intro-image");
     document.body.appendChild(img);
+
+    // Redirect after animation ends
+    setTimeout(() => {
+      window.location.href = "https://89flexy.github.io/Flexy.in/index.html";
+    }, 3500); // matches image animation duration
   });
 </script>
-
-<style>
-@keyframes fadeHoldImage {
-  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-  20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  77% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
-}
-</style>
 
 </body>
 </html>
