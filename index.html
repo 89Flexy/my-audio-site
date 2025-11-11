@@ -1,150 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="description" content="89 flex-Anime site & other"/>
-  <link rel="canonical" href="https://89flexy.github.io/Flexy.in/" />
-  <meta property="og:locale" content="en_US" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="89 Flex" />
-  <meta property="og:description" content="89Flex-Anime Site & Other" />
-  <meta property="og:url" content="https://89flexy.github.io/Flexy.in/" />
-  <meta property="og:site_name" content="89 Flex" />
-  <link rel="icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" sizes="32x32" />
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>89 Flexy Home</title>
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      overflow: hidden;
-      touch-action: none;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>89 Flexy Home</title>
+<style>
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+  touch-action: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-    /* Preloader */
-    #preloader {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+/* Preloader */
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
 
-    .loading-dots {
-      display: flex;
-      gap: 12px;
-    }
+.loading-dots {
+  display: flex;
+  gap: 12px;
+}
 
-    .dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      animation: bounce 1.2s infinite ease-in-out;
-    }
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+.dot:nth-child(1) { background: #ff3c3c; animation-delay: 0s; }
+.dot:nth-child(2) { background: #ff9f3c; animation-delay: 0.2s; }
+.dot:nth-child(3) { background: #3cff9f; animation-delay: 0.4s; }
+.dot:nth-child(4) { background: #3c83ff; animation-delay: 0.6s; }
+.dot:nth-child(5) { background: #d53cff; animation-delay: 0.8s; }
 
-    .dot:nth-child(1) { background: #ff3c3c; animation-delay: 0s; }
-    .dot:nth-child(2) { background: #ff9f3c; animation-delay: 0.2s; }
-    .dot:nth-child(3) { background: #3cff9f; animation-delay: 0.4s; }
-    .dot:nth-child(4) { background: #3c83ff; animation-delay: 0.6s; }
-    .dot:nth-child(5) { background: #d53cff; animation-delay: 0.8s; }
+@keyframes bounce {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40% { transform: scale(1); opacity: 1; }
+}
 
-    @keyframes bounce {
-      0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-      40% { transform: scale(1); opacity: 1; }
-    }
+#startBtn {
+  position: absolute;
+  bottom: 50px;
+  padding: 12px 30px;
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, #1e90ff, #00bfff, #ff4db8, #ff3c3c);
+  background-size: 300% 300%;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+  animation: gradientMove 6s ease infinite;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  z-index: 10;
+}
+#startBtn:hover { transform: scale(1.1); box-shadow: 0 8px 25px rgba(0,0,0,0.6); }
 
-    #startBtn {
-      position: absolute;
-      bottom: 50px;
-      padding: 12px 30px;
-      font-size: 18px;
-      font-weight: 900;
-      color: #fff;
-      background: linear-gradient(135deg, #1e90ff, #00bfff, #ff4db8, #ff3c3c);
-      background-size: 300% 300%;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-      animation: gradientMove 6s ease infinite;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      z-index: 10;
-    }
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    #startBtn:hover, .focused {
-      transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    }
+.circle-out {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
+  background-size: 200% 200%;
+  box-shadow: 0 0 100px rgba(255,255,255,0.7);
+  transform: translate(-50%, -50%) scale(0);
+  animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
+  z-index: 9999;
+}
+@keyframes expandCircle {
+  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(60); opacity: 1; }
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.intro-image {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  z-index: 10000;
+  width: 180px;
+  border-radius: 12px;
+  animation: fadeHoldImage 3.5s ease-in-out forwards;
+}
+@keyframes fadeHoldImage {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  77% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+}
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .circle-out {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
-      background-size: 200% 200%;
-      box-shadow: 0 0 100px rgba(255,255,255,0.7);
-      transform: translate(-50%, -50%) scale(0);
-      animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
-      z-index: 9999;
-    }
-
-    @keyframes expandCircle {
-      0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-      100% { transform: translate(-50%, -50%) scale(60); opacity: 1; }
-    }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .intro-image {
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%) scale(0.8);
-      opacity: 0;
-      z-index: 10000;
-      width: 180px;
-      border-radius: 12px;
-      animation: fadeHoldImage 3.5s ease-in-out forwards;
-    }
-
-    @keyframes fadeHoldImage {
-      0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-      20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      77% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
-    }
-
-    /* Touch Cursor */
-    #touchCursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      transition: transform 0.05s linear;
-      z-index: 99999;
-    }
-  </style>
+/* Cursor */
+#cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 99999;
+  transition: left 0.05s linear, top 0.05s linear;
+}
+</style>
 </head>
 <body>
 
@@ -152,62 +135,65 @@
   <div class="loading-dots">
     <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
   </div>
-  <button id="startBtn" class="focused">START</button>
+  <button id="startBtn">START</button>
   <audio id="introAudio">
     <source src="https://raw.githubusercontent.com/89Flexy/my-audio-site/84ab222e2da2ec9852e3197f17944b6e078d5c76/Intro.mp3" type="audio/mpeg">
   </audio>
 </div>
 
-<div id="touchCursor"></div>
+<div id="cursor"></div>
 
 <script>
-  const startBtn = document.getElementById("startBtn");
-  const introAudio = document.getElementById("introAudio");
-  const preloader = document.getElementById("preloader");
-  const cursor = document.getElementById("touchCursor");
+const cursor = document.getElementById("cursor");
+const startBtn = document.getElementById("startBtn");
+const preloader = document.getElementById("preloader");
+const introAudio = document.getElementById("introAudio");
 
-  // Click / Start action
-  startBtn.addEventListener("click", () => {
-    introAudio.play().catch(() => {});
-    preloader.style.display = "none";
-    const circle = document.createElement("div");
-    circle.classList.add("circle-out");
-    document.body.appendChild(circle);
-    const img = document.createElement("img");
-    img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png";
-    img.classList.add("intro-image");
-    document.body.appendChild(img);
-    setTimeout(() => window.location.href = "https://89flexy.github.io/Flexy.in/index.html", 3500);
-  });
+let cursorX = window.innerWidth / 2;
+let cursorY = window.innerHeight / 2;
+cursor.style.left = cursorX + "px";
+cursor.style.top = cursorY + "px";
 
-  // Remote ENTER = Click
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") startBtn.click();
-  });
+// Remote movement
+document.addEventListener("keydown", e => {
+  const step = 40;
+  if (e.key === "ArrowUp") cursorY = Math.max(0, cursorY - step);
+  if (e.key === "ArrowDown") cursorY = Math.min(window.innerHeight, cursorY + step);
+  if (e.key === "ArrowLeft") cursorX = Math.max(0, cursorX - step);
+  if (e.key === "ArrowRight") cursorX = Math.min(window.innerWidth, cursorX + step);
+  cursor.style.left = cursorX + "px";
+  cursor.style.top = cursorY + "px";
+  if (e.key === "Enter") simulateClick(cursorX, cursorY);
+});
 
-  // Touch Cursor movement
-  document.addEventListener("touchmove", (e) => {
-    const touch = e.touches[0];
-    cursor.style.left = `${touch.clientX}px`;
-    cursor.style.top = `${touch.clientY}px`;
-  });
+// Touch support
+document.addEventListener("touchmove", e => {
+  const t = e.touches[0];
+  cursorX = t.clientX;
+  cursorY = t.clientY;
+  cursor.style.left = cursorX + "px";
+  cursor.style.top = cursorY + "px";
+});
+document.addEventListener("touchend", () => simulateClick(cursorX, cursorY));
 
-  document.addEventListener("touchstart", (e) => {
-    const touch = e.touches[0];
-    cursor.style.left = `${touch.clientX}px`;
-    cursor.style.top = `${touch.clientY}px`;
-    cursor.style.transform = "translate(-50%, -50%) scale(1.2)";
-    setTimeout(() => cursor.style.transform = "translate(-50%, -50%) scale(1)", 100);
-  });
+function simulateClick(x, y) {
+  const el = document.elementFromPoint(x, y);
+  if (el && el.tagName === "BUTTON") el.click();
+}
 
-  document.addEventListener("touchend", () => {
-    const btnRect = startBtn.getBoundingClientRect();
-    const cx = parseFloat(cursor.style.left);
-    const cy = parseFloat(cursor.style.top);
-    if (cx > btnRect.left && cx < btnRect.right && cy > btnRect.top && cy < btnRect.bottom) {
-      startBtn.click();
-    }
-  });
+// Start button
+startBtn.addEventListener("click", () => {
+  introAudio.play().catch(()=>{});
+  preloader.style.display = "none";
+  const circle = document.createElement("div");
+  circle.classList.add("circle-out");
+  document.body.appendChild(circle);
+  const img = document.createElement("img");
+  img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png";
+  img.classList.add("intro-image");
+  document.body.appendChild(img);
+  setTimeout(()=>window.location.href="https://89flexy.github.io/Flexy.in/index.html", 3500);
+});
 </script>
 
 </body>
