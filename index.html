@@ -49,8 +49,8 @@ body {
 #startBtn {
   position: absolute;
   bottom: 50px;
-  padding: 12px 30px;
-  font-size: 18px;
+  padding: 14px 40px;
+  font-size: 20px;
   font-weight: 900;
   color: #fff;
   background: linear-gradient(135deg, #1e90ff, #00bfff, #ff4db8, #ff3c3c);
@@ -65,11 +65,13 @@ body {
   text-transform: uppercase;
   z-index: 10;
 }
-#startBtn:hover, 
-#startBtn:focus {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #00aaff;
-  outline: none;
+
+#startBtn:hover,
+#startBtn:focus,
+#startBtn.tv-focus {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #00aaff;
+  outline: 3px solid #00aaff;
 }
 
 @keyframes gradientMove {
@@ -129,41 +131,47 @@ body {
   <div class="loading-dots">
     <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
   </div>
-  <button id="startBtn">START</button>
+  <button id="startBtn" tabindex="0">START</button>
   <audio id="introAudio">
     <source src="https://raw.githubusercontent.com/89Flexy/my-audio-site/84ab222e2da2ec9852e3197f17944b6e078d5c76/Intro.mp3" type="audio/mpeg">
   </audio>
 </div>
 
 <script>
-// Get elements
 const startBtn = document.getElementById("startBtn");
 const preloader = document.getElementById("preloader");
 const introAudio = document.getElementById("introAudio");
 
-// Focus start button automatically (for TV remote)
+// Focus the button on load
 startBtn.focus();
+startBtn.classList.add("tv-focus");
 
-// Remote enter key click
+// ✅ Handle TV remote OK/Enter
 document.addEventListener("keydown", (e) => {
   if (e.key === "Enter" || e.keyCode === 13) {
-    if (document.activeElement === startBtn) {
-      startBtn.click();
-    }
+    startBtn.click();
+  }
+  if (e.key === "ArrowUp" || e.key === "ArrowDown" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
+    // force focus again if lost
+    startBtn.focus();
+    startBtn.classList.add("tv-focus");
   }
 });
 
-// Start button click
+// ✅ Button click event
 startBtn.addEventListener("click", () => {
   introAudio.play().catch(()=>{});
   preloader.style.display = "none";
+
   const circle = document.createElement("div");
   circle.classList.add("circle-out");
   document.body.appendChild(circle);
+
   const img = document.createElement("img");
   img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png";
   img.classList.add("intro-image");
   document.body.appendChild(img);
+
   setTimeout(() => {
     window.location.href = "https://89flexy.github.io/Flexy.in/index.html";
   }, 3500);
