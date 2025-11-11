@@ -46,7 +46,7 @@ body {
   40% { transform: scale(1); opacity: 1; }
 }
 
-#startBtn {
+#startButton {
   position: absolute;
   bottom: 50px;
   padding: 14px 40px;
@@ -66,9 +66,9 @@ body {
   z-index: 10;
 }
 
-#startBtn:hover,
-#startBtn:focus,
-#startBtn.tv-focus {
+#startButton:hover,
+#startButton:focus,
+#startButton.tv-focus {
   transform: scale(1.15);
   box-shadow: 0 0 25px #00aaff;
   outline: 3px solid #00aaff;
@@ -140,26 +140,31 @@ body {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const startBtn = document.querySelector("#startButton");
-  
-  if (!startBtn) return;
+  const audio = document.getElementById("introAudio");
 
-  // Remote key listener
+  // ✅ Remote + Keyboard support (Croma, Mi, FireTV etc)
   document.addEventListener("keydown", (e) => {
-    const key = e.key || e.keyCode;
-    if (key === "Enter" || key === 13 || key === "OK" || key === "Center") {
+    const key = e.keyCode || e.which;
+    if ([13, 23, 66, 97, 100, 167].includes(key)) {
       startBtn.click();
     }
   });
 
-  // Optional: Focus effect for TV
+  // ✅ Remote Focus highlight
   startBtn.setAttribute("tabindex", "0");
-  startBtn.addEventListener("focus", () => {
-    startBtn.style.outline = "3px solid #00aaff";
-    startBtn.style.boxShadow = "0 0 15px #00aaff";
-  });
-  startBtn.addEventListener("blur", () => {
-    startBtn.style.outline = "none";
-    startBtn.style.boxShadow = "none";
+  startBtn.focus();
+  startBtn.classList.add("tv-focus");
+
+  // ✅ Button click event
+  startBtn.addEventListener("click", () => {
+    startBtn.disabled = true;
+    audio.play();
+    const circle = document.createElement("div");
+    circle.className = "circle-out";
+    document.body.appendChild(circle);
+    setTimeout(() => {
+      window.location.href = "https://89flexy.github.io/Flexy.in/";
+    }, 2000);
   });
 });
 </script>
