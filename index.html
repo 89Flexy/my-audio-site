@@ -74,25 +74,25 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* ✨ Gradient Circle Animation ✨ */
+  /* ✨ Smooth Gradient Circle Animation ✨ */
   .circle-out {
     position: fixed;
     left: 50%;
     top: 50%;
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
     background-size: 200% 200%;
-    box-shadow: 0 0 60px rgba(255, 0, 128, 0.6), 0 0 120px rgba(30, 144, 255, 0.6);
+    box-shadow: 0 0 100px rgba(255, 0, 128, 0.7), 0 0 150px rgba(30, 144, 255, 0.6);
     transform: translate(-50%, -50%) scale(0);
-    animation: expandCircle 1s forwards, gradientShift 3s infinite ease-in-out;
+    animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
     z-index: 9999;
   }
 
   @keyframes expandCircle {
     0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-    100% { transform: translate(-50%, -50%) scale(50); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(60); opacity: 1; }
   }
 
   @keyframes gradientShift {
@@ -100,7 +100,6 @@
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
-
 </style>
 </head>
 <body>
@@ -130,7 +129,7 @@
     // Play audio
     introAudio.play().catch(err => console.log("Audio play blocked", err));
 
-    // Create gradient circle effect
+    // Create smooth gradient circle effect
     const circle = document.createElement("div");
     circle.classList.add("circle-out");
     document.body.appendChild(circle);
@@ -138,10 +137,10 @@
     // Hide preloader content immediately
     preloader.style.display = "none";
 
-    // Wait until audio ends, then redirect
-    introAudio.addEventListener("ended", () => {
+    // Redirect smoothly after 2 seconds
+    setTimeout(() => {
       window.location.href = "https://89flexy.github.io/Flexy.in/index.html";
-    });
+    }, 1000); // 2 seconds
   });
 </script>
 
