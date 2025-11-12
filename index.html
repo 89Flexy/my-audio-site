@@ -1,233 +1,174 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-  <meta name="description" content="89 flex-Anime site & other"/>  
-<link rel="canonical" href="https://89flexy.github.io/Flexy.in/" />  
-<meta property="og:locale" content="en_US" />  
-<meta property="og:type" content="website" />  
-<meta property="og:title" content="89 Flex" />  
-<meta property="og:description" content="89Flex-Anime Site & Other" />  
-<meta property="og:url" content="https://89flexy.github.io/Flexy.in/" />  
-<meta property="og:site_name" content="89 Flex" />  
-<link rel="icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" sizes="32x32" />  
-<link rel="icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" sizes="192x192" />  
-<link rel="apple-touch-icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" />  
-<meta name="msapplication-TileImage" content="https://i.ibb.co/ymKVH9q6/20250920-155127.png" />  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>89 Flexy Home</title>  
-<link rel="icon" href="https://i.ibb.co/ymKVH9q6/20250920-155127.png" sizes="32x32" />  
-<style>  
-  /* Preloader styles */  
-  #preloader {  
-    position: fixed;  
-    inset: 0;  
-    background: #000;  
-    display: flex;  
-    flex-direction: column;  
-    justify-content: center;  
-    align-items: center;  
-    z-index: 9999;  
-  }  .loading-dots {
-display: flex;
-gap: 12px;
-z-index: 10;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>89 Flexy Home</title>
+<style>
+  /* Preloader styles */
+  #preloader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
 
-.dot {
-width: 16px;
-height: 16px;
-border-radius: 50%;
-animation: bounce 1.2s infinite ease-in-out;
-}
+  .loading-dots {
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+  }
 
-.dot:nth-child(1) { background: #ff3c3c; animation-delay: 0s; }
-.dot:nth-child(2) { background: #ff9f3c; animation-delay: 0.2s; }
-.dot:nth-child(3) { background: #3cff9f; animation-delay: 0.4s; }
-.dot:nth-child(4) { background: #3c83ff; animation-delay: 0.6s; }
-.dot:nth-child(5) { background: #d53cff; animation-delay: 0.8s; }
+  .dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    animation: bounce 1.2s infinite ease-in-out;
+  }
 
-@keyframes bounce {
-0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
-40% { transform: scale(1); opacity: 1; }
-}
+  .dot:nth-child(1) { background: #ff3c3c; animation-delay: 0s; }
+  .dot:nth-child(2) { background: #ff9f3c; animation-delay: 0.2s; }
+  .dot:nth-child(3) { background: #3cff9f; animation-delay: 0.4s; }
+  .dot:nth-child(4) { background: #3c83ff; animation-delay: 0.6s; }
+  .dot:nth-child(5) { background: #d53cff; animation-delay: 0.8s; }
 
-/* START button */
-#startBtn {
-position: absolute;
-bottom: 50px;
-padding: 12px 30px;
-font-size: 18px;
-font-weight: 900;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: #fff;
-background: linear-gradient(135deg, #1e90ff, #00bfff, #ff4db8, #ff3c3c);
-background-size: 300% 300%;
-border: none;
-border-radius: 25px;
-cursor: pointer;
-transition: all 0.3s ease;
-box-shadow: 0 6px 20px rgba(0,0,0,0.4);
-animation: gradientMove 6s ease infinite;
-letter-spacing: 1px;
-text-transform: uppercase;
-z-index: 10;
-}
+  @keyframes bounce {
+    0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+    40% { transform: scale(1); opacity: 1; }
+  }
 
-#startBtn:hover {
-transform: scale(1.1);
-box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-}
+  /* START button */
+  #startBtn {
+    position: absolute;
+    bottom: 50px; 
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 900; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    background: linear-gradient(135deg, #1e90ff, #00bfff, #ff4db8, #ff3c3c);
+    background-size: 300% 300%;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    animation: gradientMove 6s ease infinite;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 10;
+  }
 
-@keyframes gradientMove {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
-}
+  #startBtn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  }
 
-/* Gradient circle */
-.circle-out {
-position: fixed;
-left: 50%;
-top: 50%;
-width: 80px;
-height: 80px;
-border-radius: 50%;
-background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
-background-size: 200% 200%;
-box-shadow: 0 0 100px rgba(255,0,128,0.7), 0 0 150px rgba(30,144,255,0.6);
-transform: translate(-50%, -50%) scale(0);
-animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
-z-index: 9999;
-}
+  @keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-@keyframes expandCircle {
-0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-100% { transform: translate(-50%, -50%) scale(60); opacity: 1; }
-}
+  /* Circle animation */
+  .circle-out {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1e90ff, #ff3c8e, #ff3c3c);
+    background-size: 200% 200%;
+    box-shadow: 0 0 100px rgba(255, 0, 128, 0.7), 0 0 150px rgba(30, 144, 255, 0.6);
+    transform: translate(-50%, -50%) scale(0);
+    animation: expandCircle 2s ease-in-out forwards, gradientShift 4s infinite ease-in-out;
+    z-index: 9999;
+  }
 
-@keyframes gradientShift {
-0% { background-position: 0% 50%; }
-50% { background-position: 100% 50%; }
-100% { background-position: 0% 50%; }
-}
+  @keyframes expandCircle {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(60); opacity: 1; }
+  }
 
-/* Image fade/scale animation with 2s hold */
-.intro-image {
-position: fixed;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%) scale(0.8);
-opacity: 0;
-z-index: 10000;
-width: 180px;
-border-radius: 12px;
-animation: fadeHoldImage 3.5s ease-in-out forwards;
-}
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-@keyframes fadeHoldImage {
-0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
-20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }  /* fade in /
-77% { opacity: 1; transform: translate(-50%, -50%) scale(1); }  / hold visible /
-100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); } / fade out */
-}
+  /* 🆕 Image fade/scale animation only */
+  .intro-image {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    z-index: 10000;
+    width: 180px;
+    border-radius: 12px;
+    animation: fadeImage 2.5s ease-in-out forwards;
+  }
 
-</style>  
-</head>  
-<body>  <!-- Preloader -->  <div id="preloader">  
-  <div class="loading-dots">  
-    <div class="dot"></div>  
-    <div class="dot"></div>  
-    <div class="dot"></div>  
-    <div class="dot"></div>  
-    <div class="dot"></div>  
-  </div>  
-  <button id="startBtn">START</button>  
-  <audio id="introAudio">  
-    <source src="https://raw.githubusercontent.com/89Flexy/my-audio-site/84ab222e2da2ec9852e3197f17944b6e078d5c76/Intro.mp3" type="audio/mpeg">  
-    Your browser does not support the audio element.  
-  </audio>  
-</div>  <script>  
-  const startBtn = document.getElementById("startBtn");  
-  const introAudio = document.getElementById("introAudio");  
-  const preloader = document.getElementById("preloader");  
-  
-  startBtn.addEventListener("click", () => {  
-    // Play audio  
-    introAudio.play().catch(err => console.log("Audio play blocked", err));  
-  
-    // Create gradient circle  
-    const circle = document.createElement("div");  
-    circle.classList.add("circle-out");  
-    document.body.appendChild(circle);  
-  
-    // Hide preloader content  
-    preloader.style.display = "none";  
-  
-    // Add fading image  
-    const img = document.createElement("img");  
-    img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png";  
-    img.classList.add("intro-image");  
-    document.body.appendChild(img);  
-  
-    // Redirect after animation ends  
-    setTimeout(() => {  
-      window.location.href = "https://89flexy.github.io/Flexy.in/index.html";  
-    }, 3500); // matches image animation duration  
-  });  
-</script>  <script>    
-  // Detect Android TV or Remote devices    
-  const userAgent = navigator.userAgent.toLowerCase();    
-  const isTV = userAgent.includes("bravia") || userAgent.includes("smart-tv") ||     
-               userAgent.includes("tv") || location.search.includes("tv=1");    
-    
-  if (isTV) {    
-    document.body.classList.add("tv-mode");    
-    
-    // Make ENTER key simulate click    
-    document.addEventListener("keydown", (e) => {    
-      if (e.key === "Enter" || e.keyCode === 13) {    
-        const focused = document.querySelector(".focused");    
-        if (focused) focused.click();    
-      }    
-    });    
-    
-    // Simple remote navigation    
-    const focusable = () => Array.from(document.querySelectorAll("a, button, .card"));    
-    let index = 0;    
-    document.addEventListener("keydown", (e) => {    
-      let items = focusable();    
-      if (!items.length) return;    
-      items.forEach(i => i.classList.remove("focused"));    
-      if (e.key === "ArrowRight") index = (index + 1) % items.length;    
-      if (e.key === "ArrowLeft") index = (index - 1 + items.length) % items.length;    
-      if (e.key === "ArrowDown") index = Math.min(index + 4, items.length - 1);    
-      if (e.key === "ArrowUp") index = Math.max(index - 4, 0);    
-      items[index].classList.add("focused");    
-      items[index].scrollIntoView({ block: "center", behavior: "smooth" });    
-    });    
-  }    
-</script>  <style>    /* TV Mode Styles */
-body.tv-mode {
-background: #000;
-color: #fff;
-font-size: 1.5em;
-overflow: hidden;
-}
+  @keyframes fadeImage {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    40% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(1.2); }
+  }
 
-.tv-mode .card,
-.tv-mode a,
-.tv-mode button {
-outline: none;
-border-radius: 12px;
-transition: 0.3s;
-}
-
-.tv-mode .focused {
-border: 3px solid #00aaff;
-box-shadow: 0 0 15px #00aaff;
-transform: scale(1.1);
-}
 </style>
+</head>
+<body>
 
-</body>  
-</html>  
+<!-- Preloader -->
+<div id="preloader">
+  <div class="loading-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+  <button id="startBtn">START</button>
+  <audio id="introAudio">
+    <source src="https://raw.githubusercontent.com/89Flexy/my-audio-site/84ab222e2da2ec9852e3197f17944b6e078d5c76/Intro.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</div>
+
+<script>
+  const startBtn = document.getElementById("startBtn");
+  const introAudio = document.getElementById("introAudio");
+  const preloader = document.getElementById("preloader");
+
+  startBtn.addEventListener("click", () => {
+    // Play audio
+    introAudio.play().catch(err => console.log("Audio play blocked", err));
+
+    // Create gradient circle
+    const circle = document.createElement("div");
+    circle.classList.add("circle-out");
+    document.body.appendChild(circle);
+
+    // 🆕 Add fading image
+    const img = document.createElement("img");
+    img.src = "https://i.ibb.co/GQ7f6Wt2/1000044478-removebg-preview.png"; // replace with your image
+    img.classList.add("intro-image");
+    document.body.appendChild(img);
+
+    // Hide preloader content
+    preloader.style.display = "none";
+
+    // Redirect after 3 seconds
+    setTimeout(() => {
+      window.location.href = "https://89flexy.github.io/Flexy.in/index.html";
+    }, 3000);
+  });
+</script>
+
+</body>
+</html>
